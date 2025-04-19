@@ -1,10 +1,7 @@
 package dev.Zerpyhis.VibeEvents.controller;
 
-import dev.Zerpyhis.VibeEvents.entitys.category.CategoryEntity;
 import dev.Zerpyhis.VibeEvents.entitys.person.PersonEntity;
-import dev.Zerpyhis.VibeEvents.records.DataCategory;
 import dev.Zerpyhis.VibeEvents.records.DataPerson;
-import dev.Zerpyhis.VibeEvents.service.CategoryService;
 import dev.Zerpyhis.VibeEvents.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
