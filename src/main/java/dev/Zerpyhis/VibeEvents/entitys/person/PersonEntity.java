@@ -10,16 +10,17 @@ public class PersonEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @NotBlank
     private String name;
-    @NotBlank
 
+    @NotBlank
     private String document;
-    @NotBlank
 
+    @NotBlank
     private String email;
-    @NotBlank
 
+    @NotBlank
     private String phone;
 
     public PersonEntity(){
