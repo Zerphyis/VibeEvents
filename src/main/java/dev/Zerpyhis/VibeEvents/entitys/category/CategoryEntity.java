@@ -2,6 +2,7 @@ package dev.Zerpyhis.VibeEvents.entitys.category;
 
 import dev.Zerpyhis.VibeEvents.records.DataCategory;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "categoria")
@@ -9,6 +10,8 @@ public class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank
     private String name;
 
     public CategoryEntity(DataCategory data) {
