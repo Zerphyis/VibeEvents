@@ -1,6 +1,5 @@
 package dev.Zerpyhis.VibeEvents.controller;
 
-import dev.Zerpyhis.VibeEvents.entitys.events.EventsEntity;
 import dev.Zerpyhis.VibeEvents.records.DataEventsReponse;
 import dev.Zerpyhis.VibeEvents.records.RegisterEvent;
 import dev.Zerpyhis.VibeEvents.service.EventService;
