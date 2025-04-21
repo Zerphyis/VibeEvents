@@ -2,6 +2,7 @@ package dev.Zerpyhis.VibeEvents.service;
 
 import dev.Zerpyhis.VibeEvents.entitys.category.CategoryEntity;
 import dev.Zerpyhis.VibeEvents.entitys.events.EventsEntity;
+import dev.Zerpyhis.VibeEvents.exceptions.CategoryNotFoundException;
 import dev.Zerpyhis.VibeEvents.exceptions.EventsNotFoundException;
 import dev.Zerpyhis.VibeEvents.records.DataEvents;
 import dev.Zerpyhis.VibeEvents.records.DataEventsReponse;
@@ -13,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,14 +26,14 @@ public class EventService {
 
     @Transactional
     public DataEventsReponse createEvent(RegisterEvent data) {
-        Optional<CategoryEntity> category = categoryRepository.findById(data.categoryId());
-
+        CategoryEntity category = categoryRepository.findById(data.categoryId())
+                .orElseThrow(() -> new CategoryNotFoundException("Categoria não encontrada"));
 
         EventsEntity event = new EventsEntity(new DataEvents(
                 data.name(),
                 data.location(),
                 data.date(),
-                category.orElse(null)
+                category
         ));
 
         EventsEntity saved = eventsRepository.save(event);
@@ -53,10 +53,10 @@ public class EventService {
     }
 
     public DataEventsReponse findEventById(Long id) {
-        Optional<EventsEntity> event = eventsRepository.findById(id)
+        EventsEntity event = eventsRepository.findById(id)
+                .orElseThrow(() -> new EventsNotFoundException("Evento não encontrado"));
 
-
-        return new DataEventsReponse(event.get().getName(), event.get().getLocation(), event.get().getDate(), event.get().getCategory().getName());
+        return new DataEventsReponse(event.getName(), event.getLocation(), event.getDate(), event.getCategory().getName());
     }
 
     @Transactional
@@ -69,17 +69,18 @@ public class EventService {
 
     @Transactional
     public DataEventsReponse updateEvent(Long eventId, RegisterEvent data) {
-        Optional<EventsEntity> existingEvent = eventsRepository.findById(eventId);
+        EventsEntity existingEvent = eventsRepository.findById(eventId)
+                .orElseThrow(() -> new EventsNotFoundException("Evento não encontrado"));
 
-        Optional<CategoryEntity> category = categoryRepository.findById(data.categoryId());
+        CategoryEntity category = categoryRepository.findById(data.categoryId())
+                .orElseThrow(() -> new CategoryNotFoundException("Categoria não encontrada"));
 
+        existingEvent.setName(data.name());
+        existingEvent.setLocation(data.location());
+        existingEvent.setDate(data.date());
+        existingEvent.setCategory(category);
 
-        existingEvent.get().setName(data.name());
-        existingEvent.get().setLocation(data.location());
-        existingEvent.get().setDate(data.date());
-        existingEvent.get().setCategory(category.orElse(null));
-
-        Optional<EventsEntity> updated = eventsRepository.save(existingEvent);
-        return new DataEventsReponse(updated.get().getName(), updated.get().getLocation(), updated.get().getDate(), updated.get().getCategory().getName());
+        EventsEntity updated = eventsRepository.save(existingEvent);
+        return new DataEventsReponse(updated.getName(), updated.getLocation(), updated.getDate(), updated.getCategory().getName());
     }
 }
