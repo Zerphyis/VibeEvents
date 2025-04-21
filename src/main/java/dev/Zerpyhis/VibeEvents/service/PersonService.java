@@ -4,6 +4,7 @@ import dev.Zerpyhis.VibeEvents.entitys.person.PersonEntity;
 import dev.Zerpyhis.VibeEvents.exceptions.PersonNotFoundException;
 import dev.Zerpyhis.VibeEvents.records.DataPerson;
 import dev.Zerpyhis.VibeEvents.repositorys.PersonRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +16,13 @@ public class PersonService {
     @Autowired
     PersonRepository repository;
 
+    @Transactional
     public PersonEntity registerPerson(DataPerson data) {
         var newPerson = new PersonEntity(data);
         return repository.save(newPerson);
     }
 
+    @Transactional
     public PersonEntity atualizationPerson(Long id, DataPerson data) {
         Optional<PersonEntity> person = repository.findById(id);
         if (person.isPresent()) {
@@ -35,6 +38,7 @@ public class PersonService {
         }
     }
 
+    @Transactional
     public void deletePerson(Long id) {
         if (repository.existsById(id)) {
             repository.deleteById(id);
@@ -43,10 +47,13 @@ public class PersonService {
         }
     }
 
+    @Transactional
+
     public List<PersonEntity> ListAll() {
         return repository.findAll();
     }
 
+    @Transactional
     public PersonEntity listByid(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new PersonNotFoundException("Pessoa com ID " + id + " não encontrada"));
