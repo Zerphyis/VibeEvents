@@ -13,21 +13,26 @@ import java.time.LocalDate;
 public class EventsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long id;
+    private Long id;
 
     @NotBlank
     private String name;
+
     @NotBlank
     private String location;
+
     @NotNull
     private LocalDate date;
+
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private CategoryEntity category;
-    public  EventsEntity(){
+
+    public EventsEntity() {
 
     }
-    public EventsEntity(DataEvents data){
+
+    public EventsEntity(DataEvents data) {
         this.name = data.name();
         this.location = data.location();
         this.date = data.date();
