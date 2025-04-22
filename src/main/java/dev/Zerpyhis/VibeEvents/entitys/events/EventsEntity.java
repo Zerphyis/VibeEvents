@@ -25,6 +25,8 @@ public class EventsEntity {
 
     @NotNull
     private LocalDate date;
+    @NotNull
+    private LocalDate dateEnd;
 
     @NotNull
     private Integer quantiyTicket;
@@ -47,6 +49,7 @@ public class EventsEntity {
         this.quantiyTicket= data.quantityTicket();
         this.priceTicket= data.priceTicket();
         this.date = data.date();
+        this.dateEnd=data.dateEnd();
         this.category = data.category();
     }
 
@@ -84,6 +87,14 @@ public class EventsEntity {
 
     public String getDescription() {
         return description;
+    }
+
+    public LocalDate getDateEnd() {
+        return dateEnd;
+    }
+
+    public void setDateEnd(LocalDate dateEnd) {
+        this.dateEnd = dateEnd;
     }
 
     public void setDescription(String description) {
