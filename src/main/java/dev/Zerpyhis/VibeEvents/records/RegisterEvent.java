@@ -7,6 +7,7 @@ import org.aspectj.weaver.ast.Not;
 import java.time.LocalDate;
 
 public record RegisterEvent(@NotBlank String name,
+                            @NotBlank String description,
                             @NotBlank String location,
                             @NotNull LocalDate date,
                             @NotNull Double priceTicket,
