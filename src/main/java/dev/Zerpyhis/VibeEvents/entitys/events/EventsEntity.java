@@ -20,6 +20,8 @@ public class EventsEntity {
 
     @NotBlank
     private String location;
+    @NotBlank
+    private String description;
 
     @NotNull
     private LocalDate date;
@@ -40,6 +42,7 @@ public class EventsEntity {
 
     public EventsEntity(DataEvents data) {
         this.name = data.name();
+        this.description=data.description();
         this.location = data.location();
         this.quantiyTicket= data.quantityTicket();
         this.priceTicket= data.priceTicket();
@@ -77,6 +80,14 @@ public class EventsEntity {
 
     public Double getPriceTicket() {
         return priceTicket;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setPriceTicket(Double priceTicket) {
