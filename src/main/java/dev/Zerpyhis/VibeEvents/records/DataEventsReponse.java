@@ -8,6 +8,7 @@ public record DataEventsReponse(
         String description,
         String location,
         LocalDate date,
+        LocalDate dateEnd,
         Integer quantityTicket,
         Double priceTicket,
         String categoryName) {
