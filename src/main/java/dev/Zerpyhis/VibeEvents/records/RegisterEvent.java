@@ -9,6 +9,7 @@ import java.time.LocalDate;
 public record RegisterEvent(@NotBlank String name,
                             @NotBlank String location,
                             @NotNull LocalDate date,
+                            @NotNull Double priceTicket,
                             @NotNull Long categoryId,
                             @NotNull Integer quantityTicket
 ) {
