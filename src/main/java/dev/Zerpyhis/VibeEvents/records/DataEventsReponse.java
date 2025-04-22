@@ -6,5 +6,6 @@ import java.time.LocalDate;
 public record DataEventsReponse(   String name,
         String location,
         LocalDate date,
+        Integer quantityTicket,
         String categoryName) {
 }
