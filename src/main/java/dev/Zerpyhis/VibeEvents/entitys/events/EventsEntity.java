@@ -27,6 +27,9 @@ public class EventsEntity {
     @NotNull
     private Integer quantiyTicket;
 
+    @NotNull
+    private Double priceTicket;
+
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private CategoryEntity category;
@@ -39,6 +42,7 @@ public class EventsEntity {
         this.name = data.name();
         this.location = data.location();
         this.quantiyTicket= data.quantityTicket();
+        this.priceTicket= data.priceTicket();
         this.date = data.date();
         this.category = data.category();
     }
@@ -69,6 +73,14 @@ public class EventsEntity {
 
     public Integer getQuantiyTicket() {
         return quantiyTicket;
+    }
+
+    public Double getPriceTicket() {
+        return priceTicket;
+    }
+
+    public void setPriceTicket(Double priceTicket) {
+        this.priceTicket = priceTicket;
     }
 
     public void setQuantiyTicket(Integer quantiyTicket) {
