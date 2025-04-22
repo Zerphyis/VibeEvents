@@ -33,12 +33,13 @@ public class EventService {
                 data.name(),
                 data.location(),
                 data.date(),
+                data.priceTicket(),
                 data.quantityTicket(),
                 category
         ));
 
         EventsEntity saved = eventsRepository.save(event);
-        return new DataEventsReponse(saved.getName(), saved.getLocation(), saved.getDate(), saved.getQuantiyTicket(),saved.getCategory().getName());
+        return new DataEventsReponse(saved.getName(), saved.getLocation(), saved.getDate(), saved.getQuantiyTicket(), saved.getPriceTicket(), saved.getCategory().getName());
     }
 
     public List<DataEventsReponse> findAllEvents() {
@@ -49,6 +50,7 @@ public class EventService {
                         e.getLocation(),
                         e.getDate(),
                         e.getQuantiyTicket(),
+                        e.getPriceTicket(),
                         e.getCategory().getName()
                 ))
                 .collect(Collectors.toList());
@@ -58,7 +60,7 @@ public class EventService {
         EventsEntity event = eventsRepository.findById(id)
                 .orElseThrow(() -> new EventsNotFoundException("Evento não encontrado"));
 
-        return new DataEventsReponse(event.getName(), event.getLocation(), event.getDate(),event.getQuantiyTicket(), event.getCategory().getName());
+        return new DataEventsReponse(event.getName(), event.getLocation(), event.getDate(),event.getQuantiyTicket(), event.getPriceTicket(),event.getCategory().getName());
     }
 
     @Transactional
@@ -82,8 +84,9 @@ public class EventService {
         existingEvent.setDate(data.date());
         existingEvent.setQuantiyTicket(data.quantityTicket());
         existingEvent.setCategory(category);
+        existingEvent.setPriceTicket(data.priceTicket());
 
         EventsEntity updated = eventsRepository.save(existingEvent);
-        return new DataEventsReponse(updated.getName(), updated.getLocation(), updated.getDate(),updated.getQuantiyTicket(),updated.getCategory().getName());
+        return new DataEventsReponse(updated.getName(), updated.getLocation(), updated.getDate(),updated.getQuantiyTicket(), updated.getPriceTicket(), updated.getCategory().getName());
     }
 }
