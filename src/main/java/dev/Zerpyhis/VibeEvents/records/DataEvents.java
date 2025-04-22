@@ -7,5 +7,6 @@ import java.time.LocalDate;
 public record DataEvents(String name,
                          String location,
                          LocalDate date,
+                         Integer quantityTicket,
                          CategoryEntity category) {
 }
