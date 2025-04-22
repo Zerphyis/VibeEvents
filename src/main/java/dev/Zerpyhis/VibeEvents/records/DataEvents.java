@@ -8,6 +8,7 @@ public record DataEvents(String name,
                          String description,
                          String location,
                          LocalDate date,
+                         LocalDate dateEnd,
                          Double priceTicket,
                          Integer quantityTicket,
                          CategoryEntity category) {
