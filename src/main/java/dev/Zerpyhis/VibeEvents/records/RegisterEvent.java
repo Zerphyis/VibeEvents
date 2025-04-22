@@ -10,6 +10,7 @@ public record RegisterEvent(@NotBlank String name,
                             @NotBlank String description,
                             @NotBlank String location,
                             @NotNull LocalDate date,
+                            @NotNull LocalDate dateEnd,
                             @NotNull Double priceTicket,
                             @NotNull Long categoryId,
                             @NotNull Integer quantityTicket
