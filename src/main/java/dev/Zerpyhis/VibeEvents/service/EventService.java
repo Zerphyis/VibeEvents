@@ -31,6 +31,7 @@ public class EventService {
 
         EventsEntity event = new EventsEntity(new DataEvents(
                 data.name(),
+                data.description(),
                 data.location(),
                 data.date(),
                 data.priceTicket(),
@@ -39,7 +40,7 @@ public class EventService {
         ));
 
         EventsEntity saved = eventsRepository.save(event);
-        return new DataEventsReponse(saved.getName(), saved.getLocation(), saved.getDate(), saved.getQuantiyTicket(), saved.getPriceTicket(), saved.getCategory().getName());
+        return new DataEventsReponse(saved.getName(), saved.getDescription(), saved.getLocation(), saved.getDate(), saved.getQuantiyTicket(), saved.getPriceTicket(), saved.getCategory().getName());
     }
 
     public List<DataEventsReponse> findAllEvents() {
@@ -47,6 +48,7 @@ public class EventService {
                 .stream()
                 .map(e -> new DataEventsReponse(
                         e.getName(),
+                        e.getDescription(),
                         e.getLocation(),
                         e.getDate(),
                         e.getQuantiyTicket(),
@@ -60,7 +62,7 @@ public class EventService {
         EventsEntity event = eventsRepository.findById(id)
                 .orElseThrow(() -> new EventsNotFoundException("Evento não encontrado"));
 
-        return new DataEventsReponse(event.getName(), event.getLocation(), event.getDate(),event.getQuantiyTicket(), event.getPriceTicket(),event.getCategory().getName());
+        return new DataEventsReponse(event.getName(), event.getDescription(), event.getLocation(), event.getDate(),event.getQuantiyTicket(), event.getPriceTicket(),event.getCategory().getName());
     }
 
     @Transactional
@@ -80,6 +82,7 @@ public class EventService {
                 .orElseThrow(() -> new CategoryNotFoundException("Categoria não encontrada"));
 
         existingEvent.setName(data.name());
+        existingEvent.setDescription(data.description());
         existingEvent.setLocation(data.location());
         existingEvent.setDate(data.date());
         existingEvent.setQuantiyTicket(data.quantityTicket());
@@ -87,6 +90,6 @@ public class EventService {
         existingEvent.setPriceTicket(data.priceTicket());
 
         EventsEntity updated = eventsRepository.save(existingEvent);
-        return new DataEventsReponse(updated.getName(), updated.getLocation(), updated.getDate(),updated.getQuantiyTicket(), updated.getPriceTicket(), updated.getCategory().getName());
+        return new DataEventsReponse(updated.getName(), updated.getDescription(), updated.getLocation(), updated.getDate(),updated.getQuantiyTicket(), updated.getPriceTicket(), updated.getCategory().getName());
     }
 }
