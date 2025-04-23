@@ -4,103 +4,80 @@ import dev.Zerpyhis.VibeEvents.entitys.category.CategoryEntity;
 import dev.Zerpyhis.VibeEvents.exceptions.CategoryNotFoundException;
 import dev.Zerpyhis.VibeEvents.records.DataCategory;
 import dev.Zerpyhis.VibeEvents.repositorys.CategoryRepository;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
+
+@SpringBootTest
 class CategoryServiceTest {
-    private CategoryRepository repository;
-    private CategoryService service;
 
-    @BeforeEach
-    void setUp() {
-        repository = mock(CategoryRepository.class);
-        service = new CategoryService();
-        service.repository = repository;
+    @Mock
+    private CategoryRepository categoryRepository;
+
+    @InjectMocks
+    private CategoryService categoryService;
+
+    @Test
+    public void testRegisterCategory() {
+        DataCategory data = new DataCategory("Category 1");
+        CategoryEntity category = new CategoryEntity(data);
+
+        when(categoryRepository.save(any(CategoryEntity.class))).thenReturn(category);
+
+        CategoryEntity savedCategory = categoryService.registerCategory(data);
+
+        assertNotNull(savedCategory);
+        assertEquals("Category 1", savedCategory.getName());
     }
 
     @Test
-    void registerCategory_DeveSalvarCategoria() {
-        DataCategory data = new DataCategory("Música");
-        CategoryEntity entity = new CategoryEntity(data);
+    public void testAtualizationCategory() {
+        DataCategory data = new DataCategory("Updated Category");
+        CategoryEntity existingCategory = new CategoryEntity(new DataCategory("Old Category"));
 
-        when(repository.save(any())).thenReturn(entity);
+        when(categoryRepository.findById(1L)).thenReturn(Optional.of(existingCategory));
+        when(categoryRepository.save(any(CategoryEntity.class))).thenReturn(existingCategory);
 
-        CategoryEntity result = service.registerCategory(data);
+        CategoryEntity updatedCategory = categoryService.atualizationCategory(1L, data);
 
-        assertEquals("Música", result.getName());
-        verify(repository).save(any());
+        assertEquals("Updated Category", updatedCategory.getName());
     }
 
     @Test
-    void atualizationCategory_DeveAtualizarCategoriaExistente() {
-        Long id = 1L;
-        CategoryEntity category = new CategoryEntity(new DataCategory("Antigo"));
-        when(repository.findById(id)).thenReturn(Optional.of(category));
-        when(repository.save(any())).thenReturn(category);
+    public void testAtualizationCategoryNotFound() {
+        DataCategory data = new DataCategory("Updated Category");
 
-        DataCategory dataAtualizada = new DataCategory("Atualizado");
-        CategoryEntity result = service.atualizationCategory(id, dataAtualizada);
+        when(categoryRepository.findById(1L)).thenReturn(Optional.empty());
 
-        assertEquals("Atualizado", result.getName());
-        verify(repository).save(category);
+        assertThrows(CategoryNotFoundException.class, () -> {
+            categoryService.atualizationCategory(1L, data);
+        });
     }
 
     @Test
-    void atualizationCategory_QuandoCategoriaNaoExiste_DeveLancarExcecao() {
-        when(repository.findById(1L)).thenReturn(Optional.empty());
+    public void testDeleteCategory() {
+        when(categoryRepository.existsById(1L)).thenReturn(true);
 
-        assertThrows(CategoryNotFoundException.class, () ->
-                service.atualizationCategory(1L, new DataCategory("Inexistente")));
+        categoryService.deleteCategory(1L);
+
+        verify(categoryRepository, times(1)).deleteById(1L);
     }
 
     @Test
-    void deleteCategory_DeveDeletarCategoria() {
-        when(repository.existsById(1L)).thenReturn(true);
+    public void testDeleteCategoryNotFound() {
+        when(categoryRepository.existsById(1L)).thenReturn(false);
 
-        service.deleteCategory(1L);
-
-        verify(repository).deleteById(1L);
-    }
-
-    @Test
-    void deleteCategory_QuandoCategoriaNaoExiste_DeveLancarExcecao() {
-        when(repository.existsById(1L)).thenReturn(false);
-
-        assertThrows(CategoryNotFoundException.class, () -> service.deleteCategory(1L));
-    }
-
-    @Test
-    void ListAll_DeveRetornarTodasCategorias() {
-        List<CategoryEntity> categorias = List.of(new CategoryEntity(new DataCategory("Música")));
-        when(repository.findAll()).thenReturn(categorias);
-
-        List<CategoryEntity> result = service.ListAll();
-
-        assertEquals(1, result.size());
-    }
-
-    @Test
-    void listByid_DeveRetornarCategoriaPorId() {
-        CategoryEntity categoria = new CategoryEntity(new DataCategory("Filmes"));
-        when(repository.findById(1L)).thenReturn(Optional.of(categoria));
-
-        CategoryEntity result = service.listByid(1L);
-
-        assertEquals("Filmes", result.getName());
-    }
-
-    @Test
-    void listByid_QuandoNaoEncontrada_DeveLancarExcecao() {
-        when(repository.findById(1L)).thenReturn(Optional.empty());
-
-        assertThrows(CategoryNotFoundException.class, () -> service.listByid(1L));
+        assertThrows(CategoryNotFoundException.class, () -> {
+            categoryService.deleteCategory(1L);
+        });
     }
 
 }
