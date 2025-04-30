@@ -1,7 +1,7 @@
 package dev.Zerpyhis.VibeEvents.entitys.events;
 
 import dev.Zerpyhis.VibeEvents.entitys.category.CategoryEntity;
-import dev.Zerpyhis.VibeEvents.records.DataEvents;
+import dev.Zerpyhis.VibeEvents.records.EventsData.DataEvents;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
