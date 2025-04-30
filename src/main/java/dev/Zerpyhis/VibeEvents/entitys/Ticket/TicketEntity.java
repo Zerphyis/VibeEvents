@@ -2,7 +2,7 @@ package dev.Zerpyhis.VibeEvents.entitys.Ticket;
 
 import dev.Zerpyhis.VibeEvents.entitys.events.EventsEntity;
 import dev.Zerpyhis.VibeEvents.entitys.person.PersonEntity;
-import dev.Zerpyhis.VibeEvents.records.DataTicket;
+import dev.Zerpyhis.VibeEvents.records.TicketsData.DataTicket;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -38,6 +38,10 @@ public class TicketEntity {
     @Enumerated(EnumType.STRING)
     private  TypeTicket typeTicket;
 
+
+    public TicketEntity(){
+
+    }
 
     public TicketEntity(DataTicket data) {
         this.events = data.event();
