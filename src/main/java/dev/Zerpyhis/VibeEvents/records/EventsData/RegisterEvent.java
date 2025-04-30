@@ -1,8 +1,7 @@
-package dev.Zerpyhis.VibeEvents.records;
+package dev.Zerpyhis.VibeEvents.records.EventsData;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import org.aspectj.weaver.ast.Not;
 
 import java.time.LocalDate;
 
