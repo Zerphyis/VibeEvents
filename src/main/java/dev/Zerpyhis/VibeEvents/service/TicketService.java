@@ -8,9 +8,9 @@ import dev.Zerpyhis.VibeEvents.entitys.person.PersonEntity;
 import dev.Zerpyhis.VibeEvents.exceptions.EventsNotFoundException;
 import dev.Zerpyhis.VibeEvents.exceptions.PersonNotFoundException;
 import dev.Zerpyhis.VibeEvents.exceptions.TicketNotFoundException;
-import dev.Zerpyhis.VibeEvents.records.DataRegisterTicket;
-import dev.Zerpyhis.VibeEvents.records.DataTicket;
-import dev.Zerpyhis.VibeEvents.records.DataTicketResponse;
+import dev.Zerpyhis.VibeEvents.records.TicketsData.DataRegisterTicket;
+import dev.Zerpyhis.VibeEvents.records.TicketsData.DataTicket;
+import dev.Zerpyhis.VibeEvents.records.TicketsData.DataTicketResponse;
 import dev.Zerpyhis.VibeEvents.repositorys.EventsRepository;
 import dev.Zerpyhis.VibeEvents.repositorys.PersonRepository;
 import dev.Zerpyhis.VibeEvents.repositorys.TicketRepository;
@@ -35,6 +35,9 @@ public class TicketService {
                 .orElseThrow(() -> new EventsNotFoundException("Evento não encontrado"));
         PersonEntity person = personRepository.findById(data.personId())
                 .orElseThrow(() -> new PersonNotFoundException("Pessoa não encontrada"));
+
+        StatusTicket status = StatusTicket.valueOf(data.status());
+        TypeTicket typeTicket = TypeTicket.valueOf(data.typeTicket());
 
         TicketEntity ticket = new TicketEntity(
                 new DataTicket(
