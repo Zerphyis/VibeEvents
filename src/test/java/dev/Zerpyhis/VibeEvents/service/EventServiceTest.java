@@ -4,8 +4,6 @@ import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import dev.Zerpyhis.VibeEvents.entitys.category.CategoryEntity;
@@ -13,9 +11,9 @@ import dev.Zerpyhis.VibeEvents.entitys.events.EventsEntity;
 import dev.Zerpyhis.VibeEvents.exceptions.CategoryNotFoundException;
 import dev.Zerpyhis.VibeEvents.exceptions.EventsNotFoundException;
 import dev.Zerpyhis.VibeEvents.records.DataCategory;
-import dev.Zerpyhis.VibeEvents.records.DataEvents;
-import dev.Zerpyhis.VibeEvents.records.DataEventsReponse;
-import dev.Zerpyhis.VibeEvents.records.RegisterEvent;
+import dev.Zerpyhis.VibeEvents.records.EventsData.DataEvents;
+import dev.Zerpyhis.VibeEvents.records.EventsData.DataEventsReponse;
+import dev.Zerpyhis.VibeEvents.records.EventsData.RegisterEvent;
 import dev.Zerpyhis.VibeEvents.repositorys.CategoryRepository;
 import dev.Zerpyhis.VibeEvents.repositorys.EventsRepository;
 import org.junit.jupiter.api.Test;
