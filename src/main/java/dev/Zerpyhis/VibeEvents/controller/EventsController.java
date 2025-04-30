@@ -1,7 +1,7 @@
 package dev.Zerpyhis.VibeEvents.controller;
 
-import dev.Zerpyhis.VibeEvents.records.DataEventsReponse;
-import dev.Zerpyhis.VibeEvents.records.RegisterEvent;
+import dev.Zerpyhis.VibeEvents.records.EventsData.DataEventsReponse;
+import dev.Zerpyhis.VibeEvents.records.EventsData.RegisterEvent;
 import dev.Zerpyhis.VibeEvents.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
