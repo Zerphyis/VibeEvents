@@ -1,4 +1,4 @@
-package dev.Zerpyhis.VibeEvents.records;
+package dev.Zerpyhis.VibeEvents.records.TicketsData;
 
 import dev.Zerpyhis.VibeEvents.entitys.Ticket.StatusTicket;
 import dev.Zerpyhis.VibeEvents.entitys.Ticket.TypeTicket;
