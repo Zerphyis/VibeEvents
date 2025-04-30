@@ -1,4 +1,4 @@
-package dev.Zerpyhis.VibeEvents.records;
+package dev.Zerpyhis.VibeEvents.records.EventsData;
 
 
 import java.time.LocalDate;
