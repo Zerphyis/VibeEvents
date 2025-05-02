@@ -22,6 +22,10 @@ public class GlobalException {
         return buildResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(TicketNotFoundException.class)
+    public ResponseEntity<Map<String, String>> handleTicketNotFound(TicketNotFoundException ex) {
+        return buildResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
 
 
     private ResponseEntity<Map<String, String>> buildResponse(String message, HttpStatus status) {
