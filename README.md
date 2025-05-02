@@ -194,3 +194,12 @@ Abaixo estão os principais endpoints REST disponíveis:
 
 ![Image](https://github.com/user-attachments/assets/5de43bbf-9f41-4186-b2d7-f9d746ab92db)
 <br>
+
+### Testes
+O projeto vem com um conjunto de testes automatizados usando JUnit e Mockito.
+
+Para rodar os testes, use o comando:
+
+```
+mvn test
+```
