@@ -165,3 +165,32 @@ Abaixo estão os principais endpoints REST disponíveis:
 
 ![Image](https://github.com/user-attachments/assets/9ab93f29-c92d-4174-b2d2-e980c671f4fb)
 <br>
+
+### 4. Tickets
+#### POST /tickets: Cria um novo ticket
+
+<br>
+
+![Image](https://github.com/user-attachments/assets/fb8242d3-ccaf-4e53-b6ac-21025d6006e6)
+<br>
+
+#### GET /tickets: Retorna todos os tickets
+
+<br>
+
+![Image](https://github.com/user-attachments/assets/2353ea4f-6f31-4ac4-8ba7-c4319022343b)
+<br>
+
+#### GET /tickets/{id}: Retorna um ticket específico pelo ID
+
+<br>
+
+![Image](https://github.com/user-attachments/assets/f87a1fe5-d088-466f-9731-3d35cf530708)
+<br>
+
+#### DELETE /tickets/{id}: Deleta um ticket
+
+<br>
+
+![Image](https://github.com/user-attachments/assets/5de43bbf-9f41-4186-b2d7-f9d746ab92db)
+<br>
