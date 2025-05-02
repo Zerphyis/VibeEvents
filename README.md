@@ -94,3 +94,38 @@ Abaixo estão os principais endpoints REST disponíveis:
 
 ![Image](https://github.com/user-attachments/assets/ae929e8d-c603-4633-aa55-b970ed4b7f00)
 <br>
+
+#### 2. Pessoas
+#### POST /pessoas: Cria uma nova pessoa
+
+<br>
+
+![Image](https://github.com/user-attachments/assets/4b3df22a-be97-429d-9cb4-c1d078baab3f)
+<br>
+
+#### GET /pessoas: Retorna todas as pessoas
+
+<br>
+
+![Image](https://github.com/user-attachments/assets/5644d5af-e5d0-4b79-b4aa-e95e262dd5c3)
+<br>
+
+#### GET /pessoas/{id}: Retorna uma pessoa específica pelo ID
+
+<br>
+
+![Image](https://github.com/user-attachments/assets/e99f6ae6-46da-420f-972f-971084ee5bee)
+<br>
+
+#### PUT /pessoas/{id}: Atualiza uma pessoa
+
+<br>
+
+![Image](https://github.com/user-attachments/assets/0da9e47f-acde-447d-8965-5a197f2b9bb3)
+<br>
+#### DELETE /pessoas/{id}: Deleta uma pessoa
+
+<br>
+
+![Image](https://github.com/user-attachments/assets/eae02f64-0e7e-40a3-be1c-5e8739ca772e)
+<br>
