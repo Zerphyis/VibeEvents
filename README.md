@@ -57,3 +57,40 @@ mvn spring-boot:run
 ```
 
 A aplicação será executada na porta padrão 8080.
+
+## Endpoints da API
+Abaixo estão os principais endpoints REST disponíveis:
+
+###  1. Categorias
+#### POST /categorias: Cria uma nova categoria
+
+<br>
+
+![Image](https://github.com/user-attachments/assets/43df988d-249b-4328-9412-e61c1748ed09)
+<br>
+#### GET /categorias: Retorna todas as categorias
+
+<br>
+
+![Image](https://github.com/user-attachments/assets/aeafa50b-b0a7-41aa-852a-6a681c462554)
+<br>
+
+#### GET /categorias/{id}: Retorna uma categoria específica pelo ID
+<br>
+
+![Image](https://github.com/user-attachments/assets/4021a91c-e0fa-492c-8e65-8284ff32cdae)
+<br>
+
+#### PUT /categorias/{id}: Atualiza uma categoria
+
+<br>
+
+![Image](https://github.com/user-attachments/assets/22332cae-021b-49fd-bb73-a45889a64965)
+<br>
+
+#### DELETE /categorias/{id}: Deleta uma categoria
+
+<br>
+
+![Image](https://github.com/user-attachments/assets/ae929e8d-c603-4633-aa55-b970ed4b7f00)
+<br>
