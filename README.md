@@ -129,3 +129,39 @@ Abaixo estão os principais endpoints REST disponíveis:
 
 ![Image](https://github.com/user-attachments/assets/eae02f64-0e7e-40a3-be1c-5e8739ca772e)
 <br>
+
+### 3. Eventos
+#### POST /eventos: Cria um novo evento
+
+<br>
+
+![Image](https://github.com/user-attachments/assets/ae0031d2-c826-49e3-b13a-7cb08b7f64df)
+<br>
+
+#### GET /eventos: Retorna todos os eventos
+
+<br>
+
+![Image](https://github.com/user-attachments/assets/29b597be-f595-4fcf-b6cb-cc5beb74e08e)
+<br>
+
+#### GET /eventos/{id}: Retorna um evento específico pelo ID
+
+<br>
+
+![Image](https://github.com/user-attachments/assets/613af531-c51f-4936-bc87-00d705ae6ce6)
+<br>
+
+#### PUT /eventos/{id}: Atualiza um evento
+
+<br>
+
+![Image](https://github.com/user-attachments/assets/0c376c49-7619-4bf2-a685-f6cc97b90a87)
+<br>
+
+#### DELETE /eventos/{id}: Deleta um evento
+
+<br>
+
+![Image](https://github.com/user-attachments/assets/9ab93f29-c92d-4174-b2d2-e980c671f4fb)
+<br>
